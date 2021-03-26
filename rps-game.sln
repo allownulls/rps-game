@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rps-game", "rps-game\rps-game.csproj", "{C9E02B20-9B03-4B0F-A191-EFA02D6B5437}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rps-test", "rps-test\rps-test.csproj", "{DCD7F226-7516-446B-9A07-35F1DC7FA791}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9E02B20-9B03-4B0F-A191-EFA02D6B5437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9E02B20-9B03-4B0F-A191-EFA02D6B5437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9E02B20-9B03-4B0F-A191-EFA02D6B5437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9E02B20-9B03-4B0F-A191-EFA02D6B5437}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCD7F226-7516-446B-9A07-35F1DC7FA791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCD7F226-7516-446B-9A07-35F1DC7FA791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCD7F226-7516-446B-9A07-35F1DC7FA791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCD7F226-7516-446B-9A07-35F1DC7FA791}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3968453C-C5F7-442F-8AB7-C84DCCBE2E49}
+	EndGlobalSection
+EndGlobal
