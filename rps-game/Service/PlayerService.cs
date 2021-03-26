@@ -7,37 +7,18 @@ namespace rps_game.Service
 {
     public class PlayerService: IPlayerService
     {
+        private const int syllables = 3;
+
         ITurnService _turnService;
         IMessageService _messageService;
-        public PlayerService(ITurnService turnService, IMessageService messageService)
+        INameService _nameService;
+        public PlayerService(ITurnService turnService, 
+            IMessageService messageService,
+            INameService nameService)
         {
             _turnService = turnService;
             _messageService = messageService;
-        }
-
-        private PlayerType SelectType(int No)
-        {          
-            string input;
-            PlayerType type = PlayerType.None;
-
-            do
-            {
-                input = _messageService.ReadPlayerType(No);
-
-                if (int.TryParse(input, out var i))
-                {
-                    type = (PlayerType)System.Enum.ToObject(typeof(PlayerType), i);                    
-                }
-                else if (System.Enum.IsDefined(typeof(PlayerType), input))
-                {
-                    type = (PlayerType)System.Enum.Parse(typeof(PlayerType), input);                    
-                }
-
-            } while (type == PlayerType.None);
-
-            _messageService.WritePlayerType(type.ToString());
-
-            return type;
+            _nameService = nameService;
         }
 
         public IPlayer Create(int No)
@@ -57,10 +38,33 @@ namespace rps_game.Service
 
             if (type == PlayerType.Computer)
             {
-                return new Computer(_turnService) { Name = "Computer"};
+                return new Computer(_turnService) { Name = _nameService.GetNewRandomName(syllables) };
             }
 
             return null;
         }
+        private PlayerType SelectType(int No)
+        {
+            string input;
+            PlayerType type = PlayerType.None;
+
+            do
+            {
+                input = _messageService.ReadPlayerType(No);
+
+                if (int.TryParse(input, out var i))
+                {
+                    type = (PlayerType)System.Enum.ToObject(typeof(PlayerType), i);
+                }
+                else if (System.Enum.IsDefined(typeof(PlayerType), input))
+                {
+                    type = (PlayerType)System.Enum.Parse(typeof(PlayerType), input);
+                }
+
+            } while (type == PlayerType.None);            
+
+            return type;
+        }
+
     }
 }

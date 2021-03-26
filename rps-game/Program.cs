@@ -17,15 +17,20 @@ namespace rps_game
             .AddSingleton<ITurnService, TurnService>()
             .AddSingleton<IPlayerService, PlayerService>()
             .AddSingleton<IMessageService, MessageService>()
+            .AddSingleton<INameService, NameService>()
             .BuildServiceProvider();
+
+            _ = serviceProvider.GetService<INameService>();
 
             var resultService = serviceProvider.GetService<IResultsService>();
             var roundService = serviceProvider.GetService<IRoundService>();            
             var playerService = serviceProvider.GetService<IPlayerService>();
             var messageService = serviceProvider.GetService<IMessageService>();
-
+            
             Game game = new Game(resultService, roundService,playerService, messageService);
             game.Play();
+
+            Console.ReadLine();
         }
     }
 }

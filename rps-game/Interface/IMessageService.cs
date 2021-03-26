@@ -13,7 +13,9 @@ namespace rps_game.Interface
 
         string ReadPlayerChoice();
 
-        void WritePlayerType(string type);
+        void WritePlayer(string type, string name);
+
+        void WritePlayerExists(string name);
 
         void WritePlayerTurn(string name);
 

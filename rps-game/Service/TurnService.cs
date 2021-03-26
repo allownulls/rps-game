@@ -8,6 +8,9 @@ namespace rps_game.Service
     public class TurnService: ITurnService
     {
         IMessageService _messageService;
+        
+        private Random rand = new Random();
+        
         public TurnService(IMessageService messageService) => _messageService = messageService;
 
         public int MakeTurn(IPlayer player)
@@ -57,9 +60,7 @@ namespace rps_game.Service
         {            
             Thread.Sleep(2000);
 
-            var rand = new Random(Guid.NewGuid().GetHashCode());
-
-            Shape choice  = (Shape)(rand.Next(2)+ 1);
+            Shape choice = (Shape)(rand.Next(3) + 1);
 
             return (int)choice;
         }

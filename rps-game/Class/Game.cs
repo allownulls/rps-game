@@ -31,8 +31,30 @@ namespace rps_game.Class
             _playerService = playerService;
             _messageService = messageService;
 
-            players = new IPlayer[noOfPlayers].Select((e, i) => e = _playerService.Create(i+1)).ToArray();                       
+            GeneratePlayers();
             rounds = (new Round[noOfRounds]).Select((e, i) => e = new Round(players, _roundService, i+1)).ToArray();
+        }
+
+        private void GeneratePlayers()
+        {
+            players = new IPlayer[noOfPlayers];            
+
+            for (var i = 0; i < noOfPlayers; i++)
+            {
+                IPlayer p = null;
+                do
+                {
+                    if (p != null && p.Type == PlayerType.Human)
+                        _messageService.WritePlayerExists(p.Name);
+                        
+                    p = _playerService.Create(i + 1);                    
+                }
+                while (players.Any(e => e?.Name == p?.Name));
+
+                players[i] = p;
+
+                _messageService.WritePlayer(p.Type.ToString(), p.Name);
+            }                                                                
         }
 
         public void Play()
@@ -43,7 +65,6 @@ namespace rps_game.Class
                 _messageService.WriteGameWinner(players[winner.Value].Name);
             else
                 _messageService.WriteGameWinner();
-
         }
     }
 }

@@ -8,7 +8,7 @@ namespace rps_game.Service
         public string ReadPlayerType(int no)
         {
             Console.WriteLine();
-            Console.WriteLine($"Enter player {no} type (1: Human / 2: Computer)");                
+            Console.WriteLine($"Enter player {no} type (1: Human / 2: Computer)");
             return Console.ReadLine();
         }
 
@@ -21,7 +21,7 @@ namespace rps_game.Service
 
         public string ReadPlayerChoice() => Console.ReadLine();
 
-        public void WritePlayerType(string type) => Console.WriteLine($"Type selected: {type}");
+        public void WritePlayer(string type, string name) => Console.WriteLine($"{type} player: {name}");
 
         public void WritePlayerTurn(string name)
         {
@@ -31,7 +31,7 @@ namespace rps_game.Service
 
         public void WritePlayerChoice(string name, string choice) => Console.WriteLine($"{name} choice: {choice}");
 
-        public void WriteGameWinner(string name) 
+        public void WriteGameWinner(string name)
         {
             Console.WriteLine();
             Console.WriteLine($"{name} wins!");
@@ -42,6 +42,8 @@ namespace rps_game.Service
             Console.WriteLine();
             Console.WriteLine($"Draw! Rematch?");
         }
+
+        public void WritePlayerExists(string name) => Console.WriteLine($"Sorry, the name {name} is already taken");
 
     }
 }

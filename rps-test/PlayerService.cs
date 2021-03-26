@@ -21,14 +21,16 @@ namespace rps_test
             var turnService = new Mock<ITurnService>();
             turnService.Setup(e => e.MakeTurn(player.Object)).Returns(1);
 
+            var nameService = new Mock<NameService>();
+
             var messageService = new Mock<IMessageService>();
             messageService.Setup(e => e.ReadPlayerType(0)).Returns("1");
             messageService.Setup(e => e.ReadPlayerType(1)).Returns("2");
             messageService.Setup(e => e.ReadPlayerName(0)).Returns(name);            
 
-            PlayerService playerService = new PlayerService(turnService.Object, messageService.Object);
+            PlayerService playerService = new PlayerService(turnService.Object, messageService.Object, nameService.Object);
 
-            var player1 = playerService.Create(0);
+            var player1 = playerService.Create(0);            
             var player2 = playerService.Create(1);
 
             Assert.IsTrue(player1 != null);
